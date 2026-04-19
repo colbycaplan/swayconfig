@@ -1,0 +1,48 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "memory", "network", "bluetooth"],
+
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+
+    "clock": {
+        "format": "{:%H:%M | %a %d %b}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "cpu": {
+        "format": "CPU {usage}%",
+        "tooltip": false,
+	"on-click": "kitty -e btop"
+    },
+
+    "memory": {
+        "format": "RAM {}%",
+	"on-click": "kitty -e btop"
+    },
+
+    "network": {
+        "format-wifi": "WIFI {essid}",
+        "format-ethernet": "ETH",
+        "format-disconnected": "OFFLINE",
+	"on-click": "kitty -e nmtui",
+        "tooltip-format": "{ifname} via {gwaddr}"
+    },
+
+"bluetooth": {
+        "format": "BT {status}",
+        "format-connected": "BT {num_connections}",
+        "on-click": "blueman-manager", // Opens the Bluetooth manager GUI
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    }
+}
