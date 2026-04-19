@@ -4,3 +4,7 @@ waybar
 swayidle
 swaylock
 rofi
+kitty
+btop
+blueman
+nmtui
