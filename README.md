@@ -31,3 +31,8 @@ BlackAndWhite
 
 ### How to pull changes:
 ```chezmoi update```
+
+### How to edit:
+```chezmoi edit ~/.config/sway/config```
+```chezmoi edit ~/.config/waybar/config.jsonc```
+```chezmoi edit ~/.config/waybar/style.css```
