@@ -1,0 +1,92 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+    "modules-left": ["sway/workspaces", "sway/mode", "cpu", "memory"],
+    "modules-center": ["clock"],
+    "modules-right": [
+        "network",
+        "bluetooth",
+        {{- if hasPrefix "fedora" .chezmoi.hostname }}
+        "power-profiles-daemon", 
+        "battery", 
+        {{- end }}
+        "custom/power"
+    ],
+
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+
+    "clock": {
+        "format": "{:%I:%M %p | %a %d %b}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "cpu": {
+        "format": "CPU {usage}%",
+        "tooltip": false,
+        "on-click": "kitty -e btop"
+    },
+
+    "memory": {
+        "format": "RAM {}%",
+        "on-click": "kitty -e btop"
+    },
+
+    "network": {
+        "format-wifi": "WIFI {essid}",
+        "format-ethernet": "ETH",
+        "format-disconnected": "OFFLINE",
+        "on-click": "kitty -e nmtui",
+        "tooltip-format": "{ifname} via {gwaddr}"
+    },
+
+    "bluetooth": {
+        "format": "BT {status}",
+        "format-connected": "BT {num_connections}",
+        "on-click": "blueman-manager",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "CHARGING {capacity}%",
+        "format-plugged": "PLUGGED {capacity}%",
+        "format-icons": ["EMPTY", "LOW", "MED", "HIGH", "FULL"],
+        "tooltip-format": "{timeTo}"
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "PWR",
+            "performance": "PERF",
+            "balanced": "BAL",
+            "power-saver": "SAVE"
+        }
+    },
+
+    "custom/power": {
+	    "format": "POWER",
+
+	    "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Shutdown'  'shutdown -h now' -b 'Restart' 'shutdown -r now' -b 'Logout' 'swaymsg exit' -b 'Hibernate' 'systemctl hibernate' --background=#000000 --button-background=#000000 --button-border=#ffffff --button-text=#ffffff --border-bottom=#ffffff --border=#ffffff --text=#ffffff"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+}

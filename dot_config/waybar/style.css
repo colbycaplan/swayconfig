@@ -1,0 +1,103 @@
+* {
+border: none;
+border-radius: 0;
+font-family: "JetBrains Mono", "Monospace", "FontAwesome";
+font-size: 13px;
+min-height: 0;
+}
+
+window#waybar {
+    background-color: #000000;
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+
+
+#custom-power {
+padding: 0 10px;
+background-color: transparent;
+color: #ffffff;
+border-left: 1px solid #ffffff;
+border-right: 1px solid #ffffff;
+border-top: 1px solid #ffffff;
+border-bottom: 1px solid #ffffff;
+border-radius: 3px;
+}
+
+
+#workspaces button {
+padding: 0 10px;
+background-color: transparent;
+color: #ffffff;
+border-left: 1px solid #ffffff;
+border-right: 1px solid #ffffff;
+border-top: 1px solid #ffffff;
+border-bottom: 1px solid #ffffff;
+border-radius: 3px;
+}
+
+/* Changes colors for current workspace */
+#workspaces button.focused {
+background-color: #ffffff;
+color: #000000;
+border-radius: 3px;
+}
+
+#workspaces button.urgent {
+background-color: #ffffff;
+color: #000000;
+}
+
+#clock,
+#cpu,
+#memory,
+#network,
+#bluetooth,
+#power-profiles-daemon,
+#battery,
+#custom-power,
+#mode {
+padding: 0 10px;
+color: #ffffff;
+}
+
+#battery,
+#power-profiles-daemon {
+padding: 0 10px;
+color: #ffffff;
+border-left: 1px solid #ffffff;
+}
+
+/* Change battery color when low */
+#battery.warning {
+background-color: #ffffff;
+color: #000000;
+}
+
+#battery.critical:not(.charging) {
+background-color: #ffffff;
+color: #000000;
+/* Make battery icon blink */
+animation-name: blink;
+animation-duration: 0.5s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #000000;
+        color: #ffffff;
+    }
+}
+
+/* Separater */
+#cpu, #memory, #network, #bluetooth, #power-profiles-daemon, #battery, #custom-power {
+border-left: 1px solid #ffffff;
+border-right: 1px solid #ffffff;
+border-top: 1px solid #ffffff;
+border-bottom: 1px solid #ffffff;
+border-radius: 3px;
+}
