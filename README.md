@@ -21,13 +21,13 @@ https://www.gnome-look.org/p/2010116
 BlackAndWhite
 
 ### How to use:
-'''sudo dnf install chezmoi'''
-'''chezmoi init --apply https://github.com/colbycaplan/swayconfig.git'''
+```sudo dnf install chezmoi```
+```chezmoi init --apply https://github.com/colbycaplan/swayconfig.git```
 
 ### How to push code:
-'''chezmoi git -- add .'''
-'''chezmoi git -- commit -m "<insert message here>"'''
-'''chezmoi git -- push origin main'''
+```chezmoi git -- add .```
+```chezmoi git -- commit -m "<insert message here>"```
+```chezmoi git -- push origin main```
 
 ### How to pull changes:
-'''chezmoi update'''
+```chezmoi update```
