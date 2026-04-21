@@ -103,7 +103,7 @@ bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
     # Start your launcher
     bindsym $mod+r exec $menu -show drun
     # Browser
-    bindsym $mod+f exec helium-browser
+    bindsym $mod+f exec helium
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
@@ -246,11 +246,6 @@ mode "resize" {
 #    bindsym Print exec grim
 
 #
-# Status Bar:
-# Waybar
-#
-# Read `man 5 sway-bar` for more information about this section.
-#bar {
 #    position top
 
     # When the status_command prints a new line to stdout, swaybar updates.
